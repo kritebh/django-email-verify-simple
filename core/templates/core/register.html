@@ -1,0 +1,38 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<div class="container">
+  <div class="card">
+        <h2 class="card-title">Create Your Account</h2>
+        <small class="card-subtitle">Signup for using services</small>
+        {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+    {% endfor %}
+</ul>
+{% endif %}
+        <form class="card-form" method="POST">
+        {% csrf_token %}
+            <label for="username"></label>
+            <div class="card-input-container username">
+                <input type="text" placeholder="Enter your username" id="username" name="username">
+            </div>
+            <label for="email"></label>
+            <div class="card-input-container username">
+                <input type="email" placeholder="Enter your email" id="email" name="email">
+            </div>
+            <label for="password1"></label>
+            <div class="card-input-container password">
+                <input type="password" placeholder="Enter your password" id="password1" name="password1">
+            </div>
+            <label for="password2"></label>
+            <div class="card-input-container password">
+                <input type="password" placeholder="Enter your password Again" id="password2" name="password2">
+            </div>
+            <button class="card-button">Sign Up</button>
+            <small class="card-forgot-password">Already have an account ? <a href="{% url 'login' %}">Login</a></small>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
